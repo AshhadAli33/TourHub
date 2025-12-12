@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044976890874",
+    "project_id": "tourhub-1aade",
+    "storage_bucket": "tourhub-1aade.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044976890874:android:e3e3a921ced48d40802a43",
+        "android_client_info": {
+          "package_name": "com.example.tourhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxeSLh1dYS4YPIvj3wg4B3efeHZPAw6RQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
