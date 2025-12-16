@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:tourhub/controllers/onboarding_controller.dart';
+import 'package:tourhub/controllers/onboarding/onboarding_controller.dart';
 import 'package:tourhub/models/onboarding_items.dart';
 import 'package:tourhub/utils/app_colors.dart';
 import 'package:tourhub/widgets/onboarding/onboarding_button.dart';

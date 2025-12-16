@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tourhub/utils/app_colors.dart';
-import '../controllers/forgot_password_controller.dart';
+import '../../controllers/forgot_password/forgot_password_controller.dart';
+import '../../utils/app_colors.dart';
 
 class ForgotPasswordView extends StatelessWidget {
+  ForgotPasswordView({super.key});
+
   final ForgotPasswordController controller = Get.put(
     ForgotPasswordController(),
   );
@@ -21,16 +23,13 @@ class ForgotPasswordView extends StatelessWidget {
 
           Center(
             child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 28),
+              padding: const EdgeInsets.symmetric(horizontal: 28),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // LOGO
                   Image.asset('assets/images/logo.png', width: 130),
+                  const SizedBox(height: 22),
 
-                  SizedBox(height: 22),
-
-                  // TITLE
                   Text(
                     "Forgot Password",
                     style: TextStyle(
@@ -40,28 +39,24 @@ class ForgotPasswordView extends StatelessWidget {
                       letterSpacing: 1,
                     ),
                   ),
+                  const SizedBox(height: 10),
 
-                  SizedBox(height: 10),
-
-                  // SUBTEXT
                   Text(
                     "Enter your email to receive reset instructions",
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppColors.textcolor, fontSize: 15),
                   ),
+                  const SizedBox(height: 32),
 
-                  SizedBox(height: 32),
-
-                  // EMAIL FIELD
                   TextField(
                     controller: controller.emailController,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: "Email Address",
                       hintStyle: TextStyle(color: Colors.white54),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.12),
-                      contentPadding: EdgeInsets.symmetric(
+                      fillColor: Colors.white12,
+                      contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 16,
                       ),
@@ -71,10 +66,8 @@ class ForgotPasswordView extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 32),
 
-                  SizedBox(height: 32),
-
-                  // SEND BUTTON
                   Obx(
                     () => controller.isLoading.value
                         ? CircularProgressIndicator(
@@ -84,7 +77,7 @@ class ForgotPasswordView extends StatelessWidget {
                             onPressed: controller.resetPassword,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.secondaryColor,
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 70,
                                 vertical: 16,
                               ),
@@ -104,42 +97,32 @@ class ForgotPasswordView extends StatelessWidget {
                           ),
                   ),
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 28),
 
-                  // Bottom "Back to Login" text
-                  Positioned(
-                    bottom: 32,
-                    left: 0,
-                    right: 0,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.back(); // Go back to Login
-                      },
-                      child: Center(
-                        child: RichText(
-                          text: TextSpan(
-                            text: "Back to ",
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Back to ",
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 16,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Login",
                             style: TextStyle(
-                              color: Colors.white70,
+                              color: AppColors.secondaryColor,
+                              fontWeight: FontWeight.bold,
                               fontSize: 16,
                             ),
-                            children: [
-                              TextSpan(
-                                text: "Login",
-                                style: TextStyle(
-                                  color: AppColors.secondaryColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
