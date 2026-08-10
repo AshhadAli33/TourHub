@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../services/auth_service.dart';
+import '../../utils/app_snackbar.dart';
 
 class ForgotPasswordController extends GetxController {
+  final AuthService _authService = Get.find<AuthService>();
+
   final emailController = TextEditingController();
 
   final isLoading = false.obs;
@@ -11,49 +14,28 @@ class ForgotPasswordController extends GetxController {
     final email = emailController.text.trim();
 
     if (email.isEmpty) {
-      Get.snackbar(
-        'Error',
-        'Email is required',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.8),
-        colorText: Colors.white,
-        duration: const Duration(seconds: 3),
-      );
+      AppSnackbar.error('Error', 'Email is required');
       return;
     }
 
     if (!GetUtils.isEmail(email)) {
-      Get.snackbar(
-        'Error',
-        'Please enter a valid email address',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.8),
-        colorText: Colors.white,
-        duration: const Duration(seconds: 3),
-      );
+      AppSnackbar.error('Error', 'Please enter a valid email address');
       return;
     }
 
     try {
       isLoading.value = true;
 
-      await AuthService.sendPasswordResetEmail(email);
+      await _authService.sendPasswordResetEmail(email);
 
-      Get.snackbar(
+      AppSnackbar.success(
         'Success',
         'Password reset email sent. Check your inbox.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green.withOpacity(0.8),
-        colorText: Colors.white,
-        duration: const Duration(seconds: 4),
       );
     } catch (e) {
-      Get.snackbar(
+      AppSnackbar.error(
         'Error',
         e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.8),
-        colorText: Colors.white,
         duration: const Duration(seconds: 4),
       );
     } finally {

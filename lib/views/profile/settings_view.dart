@@ -2,21 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/profile/settings_controller.dart';
 import '../../../utils/app_colors.dart';
+import '../../widgets/common/gradient_scaffold.dart';
+import '../../widgets/common/responsive_center.dart';
 
 class SettingsView extends StatelessWidget {
   SettingsView({super.key});
-  final controller = Get.put(SettingsController());
+  final controller = Get.find<SettingsController>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GradientScaffold(
       appBar: AppBar(
         title: Text("Settings"),
         backgroundColor: AppColors.primaryColor,
       ),
-      body: Container(
-        decoration: BoxDecoration(gradient: AppColors.onboardingGradient),
+      body: ResponsiveCenter(
         child: ListView(
+          shrinkWrap: true,
           children: [
             Obx(
               () => SwitchListTile(
@@ -24,17 +26,20 @@ class SettingsView extends StatelessWidget {
                 onChanged: (_) => controller.toggleNotification(),
                 title: Text(
                   "Notifications",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: AppColors.white),
                 ),
-                activeColor: AppColors.secondaryColor,
+                activeThumbColor: AppColors.secondaryColor,
               ),
             ),
             Obx(
               () => SwitchListTile(
                 value: controller.isDarkMode.value,
                 onChanged: (_) => controller.toggleTheme(),
-                title: Text("Dark Mode", style: TextStyle(color: Colors.white)),
-                activeColor: AppColors.secondaryColor,
+                title: Text(
+                  "Dark Mode",
+                  style: TextStyle(color: AppColors.white),
+                ),
+                activeThumbColor: AppColors.secondaryColor,
               ),
             ),
           ],

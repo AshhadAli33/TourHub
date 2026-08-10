@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import '../../routes/app_routes.dart';
+import '../../services/auth_service.dart';
 
 class SplashController extends GetxController {
+  final AuthService _authService = Get.find<AuthService>();
+
   @override
   void onReady() {
     super.onReady();
@@ -12,9 +14,7 @@ class SplashController extends GetxController {
   void _navigateAfterSplash() async {
     await Future.delayed(const Duration(seconds: 2));
 
-    FirebaseAuth.instance
-        .authStateChanges()
-        .first
+    _authService.authStateChanges.first
         .then((user) {
           if (user != null) {
             Get.offAllNamed(AppRoutes.home);

@@ -2,57 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/profile/edit_profile_controller.dart';
 import '../../../utils/app_colors.dart';
+import '../../widgets/common/app_text_field.dart';
+import '../../widgets/common/gradient_scaffold.dart';
+import '../../widgets/common/loading_button.dart';
+import '../../widgets/common/responsive_center.dart';
 
 class EditProfileView extends StatelessWidget {
   EditProfileView({super.key});
-  final controller = Get.put(EditProfileController());
+  final controller = Get.find<EditProfileController>();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GradientScaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
-        title: Text("Edit Profile",style: TextStyle(color: Colors.white),),
+        title: Text("Edit Profile", style: TextStyle(color: AppColors.white)),
       ),
-      body: Container(
-        decoration: BoxDecoration(gradient: AppColors.onboardingGradient),
-        padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
+      body: ResponsiveCenter(
         child: Column(
           children: [
-            TextField(
+            AppTextField(
               controller: controller.nameController,
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                hintText: "Full Name",
-                hintStyle: TextStyle(color: Colors.white54),
-                filled: true,
-                fillColor: Colors.white12,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
+              hintText: "Full Name",
+              borderSide: const BorderSide(),
             ),
             SizedBox(height: 20),
-            Obx(
-              () => controller.isLoading.value
-                  ? CircularProgressIndicator(color: AppColors.secondaryColor)
-                  : ElevatedButton(
-                      onPressed: controller.updateProfile,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.secondaryColor,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 80,
-                          vertical: 16,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Text(
-                        "Save",
-                        style: TextStyle(color: AppColors.primaryColor),
-                      ),
-                    ),
+            LoadingButton(
+              isLoading: controller.isLoading,
+              onPressed: controller.updateProfile,
+              label: "Save",
+              textStyle: TextStyle(color: AppColors.primaryColor),
             ),
           ],
         ),

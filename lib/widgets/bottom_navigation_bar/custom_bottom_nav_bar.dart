@@ -2,14 +2,17 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/bottom_navigation_bar/bottom_nav_controller.dart';
+import '../../utils/app_colors.dart';
 
 class CustomBottomNavBar extends GetView<BottomNavController> {
   const CustomBottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bottomInset = MediaQuery.paddingOf(context).bottom;
+
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
+      padding: EdgeInsets.only(left: 16, right: 16, bottom: 20 + bottomInset),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(30),
         child: BackdropFilter(
@@ -17,17 +20,34 @@ class CustomBottomNavBar extends GetView<BottomNavController> {
           child: Container(
             height: 78,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.15),
+              color: AppColors.white.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(28),
-              border: Border.all(color: Colors.white.withOpacity(0.25)),
+              border: Border.all(
+                color: AppColors.white.withValues(alpha: 0.25),
+              ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _navItem(Icons.home_rounded, "Home", 0),
-                _navItem(Icons.airplane_ticket_rounded, "Booking", 1),
-                _navItem(Icons.favorite, "favorite", 2),
-                _navItem(Icons.person_rounded, "Profile", 3),
+                _navItem(
+                  Icons.home_rounded,
+                  Icons.home_outlined,
+                  "Home",
+                  0,
+                ),
+                _navItem(
+                  Icons.airplane_ticket_rounded,
+                  Icons.airplane_ticket_outlined,
+                  "Booking",
+                  1,
+                ),
+                _navItem(Icons.favorite, Icons.favorite_border, "favorite", 2),
+                _navItem(
+                  Icons.person_rounded,
+                  Icons.person_outline_rounded,
+                  "Profile",
+                  3,
+                ),
               ],
             ),
           ),
@@ -36,9 +56,15 @@ class CustomBottomNavBar extends GetView<BottomNavController> {
     );
   }
 
-  Widget _navItem(IconData icon, String label, int index) {
+  Widget _navItem(
+    IconData selectedIcon,
+    IconData unselectedIcon,
+    String label,
+    int index,
+  ) {
     return Obx(() {
       final bool isSelected = controller.currentIndex.value == index;
+      final icon = isSelected ? selectedIcon : unselectedIcon;
 
       return GestureDetector(
         onTap: () => controller.changeIndex(index),
@@ -48,8 +74,8 @@ class CustomBottomNavBar extends GetView<BottomNavController> {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
             color: isSelected
-                ? Colors.white.withOpacity(0.25)
-                : Colors.transparent,
+                ? AppColors.white.withValues(alpha: 0.25)
+                : AppColors.transparent,
             borderRadius: BorderRadius.circular(18),
           ),
           child: Column(
@@ -58,11 +84,7 @@ class CustomBottomNavBar extends GetView<BottomNavController> {
               AnimatedScale(
                 scale: isSelected ? 1.1 : 1.0,
                 duration: const Duration(milliseconds: 250),
-                child: Icon(
-                  icon,
-                  size: 26,
-                  color: isSelected ? Colors.white : Colors.white70,
-                ),
+                child: Icon(icon, size: 26, color: AppColors.primaryColor),
               ),
               const SizedBox(height: 4),
               AnimatedOpacity(
@@ -72,7 +94,7 @@ class CustomBottomNavBar extends GetView<BottomNavController> {
                   label,
                   style: TextStyle(
                     fontSize: 12,
-                    color: isSelected ? Colors.white : Colors.white70,
+                    color: AppColors.primaryColor,
                     fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                   ),
                 ),

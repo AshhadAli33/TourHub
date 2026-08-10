@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import '../../models/user_model.dart';
 import '../../routes/app_routes.dart';
+import '../../services/auth_service.dart';
 import '../../utils/app_colors.dart';
 
 class ProfileController extends GetxController {
-  var user = FirebaseAuth.instance.currentUser.obs;
+  final AuthService _authService = Get.find<AuthService>();
+
+  late final Rx<UserModel?> user;
+
+  @override
+  void onInit() {
+    super.onInit();
+    final currentUser = _authService.currentUser;
+    user = Rx<UserModel?>(
+      currentUser != null ? UserModel.fromFirebaseUser(currentUser) : null,
+    );
+  }
 
   void showLogoutSheet() {
     Get.bottomSheet(
@@ -39,7 +51,9 @@ class ProfileController extends GetxController {
                   child: ElevatedButton(
                     onPressed: () => Get.back(),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey.withOpacity(0.5),
+                      backgroundColor: AppColors.overlayGrey.withValues(
+                        alpha: 0.5,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -55,7 +69,7 @@ class ProfileController extends GetxController {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
+                      await _authService.logout();
                       Get.offAllNamed(AppRoutes.login);
                     },
                     style: ElevatedButton.styleFrom(

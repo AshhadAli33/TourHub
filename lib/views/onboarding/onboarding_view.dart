@@ -4,12 +4,12 @@ import 'package:lottie/lottie.dart';
 import 'package:tourhub/controllers/onboarding/onboarding_controller.dart';
 import 'package:tourhub/models/onboarding_items.dart';
 import 'package:tourhub/utils/app_colors.dart';
+import 'package:tourhub/widgets/common/responsive_center.dart';
 import 'package:tourhub/widgets/onboarding/onboarding_button.dart';
 import 'package:tourhub/widgets/onboarding/onboarding_indicator.dart';
 
 class OnboardingView extends StatelessWidget {
-  final controller = Get.put(OnboardingController());
-  final PageController pageController = PageController();
+  final controller = Get.find<OnboardingController>();
 
   OnboardingView({super.key});
 
@@ -30,45 +30,51 @@ class OnboardingView extends StatelessWidget {
               children: [
                 Expanded(
                   child: PageView.builder(
-                    controller: pageController,
+                    controller: controller.pageController,
                     itemCount: onboardingItems.length,
                     onPageChanged: controller.onPageChanged,
                     itemBuilder: (context, index) {
                       final item = onboardingItems[index];
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              item.title,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.w900,
-                                color: AppColors.headingtextcolor,
+                        child: ResponsiveCenter(
+                          alignment: Alignment.center,
+                          maxWidth: 480,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                item.title,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w900,
+                                  color: AppColors.headingtextcolor,
+                                ),
                               ),
-                            ),
 
-                            const SizedBox(height: 16),
+                              const SizedBox(height: 16),
 
-                            Text(
-                              item.description,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 17,
-                                height: 1.55,
-                                color: AppColors.textcolor.withOpacity(0.9),
+                              Text(
+                                item.description,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  height: 1.55,
+                                  color: AppColors.textcolor.withValues(
+                                    alpha: 0.9,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     },
                   ),
                 ),
 
-                buildPageIndicator(),
+                buildPageIndicator(controller),
 
                 const SizedBox(height: 24),
 
@@ -77,7 +83,7 @@ class OnboardingView extends StatelessWidget {
                       controller.pageIndex.value == onboardingItems.length - 1;
 
                   return buildBottomButton(
-                    pageController,
+                    controller,
                     isLastPage ? "Get Started" : "Next",
                   );
                 }),

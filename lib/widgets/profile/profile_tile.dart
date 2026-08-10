@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import '../../utils/app_colors.dart';
 
 class ProfileTile extends StatelessWidget {
   final IconData icon;
@@ -26,19 +27,19 @@ class ProfileTile extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.10),
+              color: AppColors.white.withValues(alpha: 0.10),
               borderRadius: BorderRadius.circular(18),
-              border: Border.all(color: Colors.white.withOpacity(0.2)),
+              border: Border.all(color: AppColors.white.withValues(alpha: 0.2)),
             ),
             child: Row(
               children: [
-                Icon(icon, color: iconColor ?? Colors.white),
+                Icon(icon, color: iconColor ?? AppColors.white),
                 const SizedBox(width: 14),
                 Expanded(
                   child: Text(
                     title,
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
@@ -47,7 +48,7 @@ class ProfileTile extends StatelessWidget {
                 const Icon(
                   Icons.arrow_forward_ios_rounded,
                   size: 16,
-                  color: Colors.white54,
+                  color: AppColors.white54,
                 ),
               ],
             ),

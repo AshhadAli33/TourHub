@@ -9,4 +9,6 @@ class AppRoutes {
   static const profile = '/profile';
   static const editProfile = '/edit-profile';
   static const settings = '/settings';
+  static const tourDetails = '/tour-details';
+  static const tourBooking = '/tour-booking';
 }

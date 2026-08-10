@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../routes/app_routes.dart';
 import '../../services/auth_service.dart';
+import '../../utils/app_snackbar.dart';
 
 class LoginController extends GetxController {
+  final AuthService _authService = Get.find<AuthService>();
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -19,32 +22,22 @@ class LoginController extends GetxController {
     final password = passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
-      Get.snackbar(
-        'Error',
-        'Email & Password cannot be empty',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.8),
-        colorText: Colors.white,
-        duration: const Duration(seconds: 3),
-      );
+      AppSnackbar.error('Error', 'Email & Password cannot be empty');
       return;
     }
 
     try {
       isLoading.value = true;
 
-      final user = await AuthService.login(email: email, password: password);
+      final user = await _authService.login(email: email, password: password);
 
       if (user != null) {
         Get.offAllNamed(AppRoutes.home);
       }
     } catch (e) {
-      Get.snackbar(
+      AppSnackbar.error(
         'Login Failed',
         e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.8),
-        colorText: Colors.white,
         duration: const Duration(seconds: 4),
       );
     } finally {

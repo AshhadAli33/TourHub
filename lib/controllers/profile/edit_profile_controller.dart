@@ -1,8 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import '../../services/auth_service.dart';
 
 class EditProfileController extends GetxController {
+  final AuthService _authService = Get.find<AuthService>();
+
   var nameController = TextEditingController();
   var isLoading = false.obs;
 
@@ -11,14 +13,16 @@ class EditProfileController extends GetxController {
 
     try {
       isLoading.value = true;
-      User? user = FirebaseAuth.instance.currentUser;
-      if (user != null) {
-        await user.updateDisplayName(nameController.text.trim());
-        await user.reload();
-      }
+      await _authService.updateDisplayName(nameController.text.trim());
       Get.back();
     } finally {
       isLoading.value = false;
     }
+  }
+
+  @override
+  void onClose() {
+    nameController.dispose();
+    super.onClose();
   }
 }

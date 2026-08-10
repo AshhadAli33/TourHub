@@ -4,9 +4,7 @@ import 'package:tourhub/utils/app_colors.dart';
 import 'package:tourhub/controllers/onboarding/onboarding_controller.dart';
 import 'package:tourhub/models/onboarding_items.dart';
 
-final OnboardingController controller = Get.find();
-
-Widget buildPageIndicator() {
+Widget buildPageIndicator(OnboardingController controller) {
   return Obx(
     () => Row(
       mainAxisAlignment: MainAxisAlignment.center,
