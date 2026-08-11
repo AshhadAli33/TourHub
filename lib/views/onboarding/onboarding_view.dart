@@ -43,6 +43,9 @@ class OnboardingView extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              _IconBadge(icon: item.icon),
+                              const SizedBox(height: 32),
+
                               Text(
                                 item.title,
                                 textAlign: TextAlign.center,
@@ -79,12 +82,13 @@ class OnboardingView extends StatelessWidget {
                 const SizedBox(height: 24),
 
                 Obx(() {
-                  bool isLastPage =
+                  final isLastPage =
                       controller.pageIndex.value == onboardingItems.length - 1;
 
                   return buildBottomButton(
                     controller,
                     isLastPage ? "Get Started" : "Next",
+                    isLastPage: isLastPage,
                   );
                 }),
 
@@ -92,7 +96,83 @@ class OnboardingView extends StatelessWidget {
               ],
             ),
           ),
+
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8, right: 20),
+                child: Obx(() {
+                  final isLastPage =
+                      controller.pageIndex.value == onboardingItems.length - 1;
+                  if (isLastPage) return const SizedBox.shrink();
+
+                  return TextButton(
+                    onPressed: () => Get.offNamed("/login"),
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.textcolor,
+                      backgroundColor: AppColors.white12,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    child: const Text(
+                      "Skip",
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class _IconBadge extends StatelessWidget {
+  final IconData icon;
+
+  const _IconBadge({required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(3),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppColors.secondaryColor, AppColors.success],
+        ),
+      ),
+      child: Container(
+        height: 96,
+        width: 96,
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: AppColors.primaryColor,
+        ),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          transitionBuilder: (child, animation) => ScaleTransition(
+            scale: animation,
+            child: FadeTransition(opacity: animation, child: child),
+          ),
+          child: Icon(
+            icon,
+            key: ValueKey(icon),
+            size: 44,
+            color: AppColors.secondaryColor,
+          ),
+        ),
       ),
     );
   }

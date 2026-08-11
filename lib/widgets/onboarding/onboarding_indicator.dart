@@ -16,8 +16,13 @@ Widget buildPageIndicator(OnboardingController controller) {
           width: isActive ? 26 : 10,
           height: 10,
           decoration: BoxDecoration(
+            gradient: isActive
+                ? const LinearGradient(
+                    colors: [AppColors.secondaryColor, AppColors.success],
+                  )
+                : null,
             color: isActive
-                ? AppColors.secondaryColor
+                ? null
                 : AppColors.secondaryColor.withAlpha((0.4 * 255).toInt()),
             borderRadius: BorderRadius.circular(40),
           ),

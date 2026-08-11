@@ -22,7 +22,13 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
-        home: Scaffold(body: buildBottomButton(controller, "Get Started")),
+        home: Scaffold(
+          body: buildBottomButton(
+            controller,
+            "Get Started",
+            isLastPage: true,
+          ),
+        ),
       ),
     );
 
