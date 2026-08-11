@@ -7,8 +7,4 @@ class BookingController extends GetxController {
   void addBooking(Booking booking) {
     bookings.insert(0, booking);
   }
-
-  void cancelBooking(Booking booking) {
-    bookings.remove(booking);
-  }
 }
