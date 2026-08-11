@@ -11,4 +11,5 @@ class AppRoutes {
   static const settings = '/settings';
   static const tourDetails = '/tour-details';
   static const tourBooking = '/tour-booking';
+  static const chatDetail = '/chat-detail';
 }

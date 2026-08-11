@@ -18,8 +18,10 @@ import '../views/signup/signup_view.dart';
 import '../views/forgot_password/forgot_password_view.dart';
 import '../views/home/home_view.dart';
 import '../models/tour_post.dart';
+import '../models/chat_conversation.dart';
 import '../views/tour_details/tour_details_view.dart';
 import '../views/booking/tour_booking_view.dart';
+import '../views/chats/chat_detail_view.dart';
 
 import 'app_routes.dart';
 
@@ -83,6 +85,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.tourBooking,
       page: () => TourBookingView(post: Get.arguments as TourPost),
+    ),
+
+    GetPage(
+      name: AppRoutes.chatDetail,
+      page: () =>
+          ChatDetailView(conversation: Get.arguments as ChatConversation),
     ),
   ];
 }

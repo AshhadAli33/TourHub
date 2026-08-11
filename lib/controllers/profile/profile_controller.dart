@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../controllers/booking/booking_controller.dart';
 import '../../models/user_model.dart';
 import '../../routes/app_routes.dart';
 import '../../services/auth_service.dart';
@@ -7,6 +8,7 @@ import '../../utils/app_colors.dart';
 
 class ProfileController extends GetxController {
   final AuthService _authService = Get.find<AuthService>();
+  final BookingController _bookingController = Get.find<BookingController>();
 
   late final Rx<UserModel?> user;
 
@@ -18,6 +20,14 @@ class ProfileController extends GetxController {
       currentUser != null ? UserModel.fromFirebaseUser(currentUser) : null,
     );
   }
+
+  int get tripsCount => _bookingController.bookings.length;
+
+  int get countriesCount =>
+      _bookingController.bookings.map((b) => b.post.location).toSet().length;
+
+  double get totalSpent =>
+      _bookingController.bookings.fold(0, (sum, b) => sum + b.total);
 
   void showLogoutSheet() {
     Get.bottomSheet(

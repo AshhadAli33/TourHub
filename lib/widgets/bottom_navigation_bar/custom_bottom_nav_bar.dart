@@ -41,7 +41,12 @@ class CustomBottomNavBar extends GetView<BottomNavController> {
                   "Booking",
                   1,
                 ),
-                _navItem(Icons.favorite, Icons.favorite_border, "favorite", 2),
+                _navItem(
+                  Icons.chat_bubble_rounded,
+                  Icons.chat_bubble_outline_rounded,
+                  "Chat",
+                  2,
+                ),
                 _navItem(
                   Icons.person_rounded,
                   Icons.person_outline_rounded,

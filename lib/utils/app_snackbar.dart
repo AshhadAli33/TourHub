@@ -31,6 +31,20 @@ class AppSnackbar {
     );
   }
 
+  static void info(
+    String title,
+    String message, {
+    Duration duration = const Duration(seconds: 3),
+  }) {
+    _show(
+      title,
+      message,
+      color: AppColors.secondaryColor,
+      icon: Icons.info_outline_rounded,
+      duration: duration,
+    );
+  }
+
   static void _show(
     String title,
     String message, {

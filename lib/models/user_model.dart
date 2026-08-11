@@ -5,8 +5,15 @@ class UserModel {
   final String? name;
   final String? email;
   final String? photoUrl;
+  final DateTime? memberSince;
 
-  const UserModel({required this.uid, this.name, this.email, this.photoUrl});
+  const UserModel({
+    required this.uid,
+    this.name,
+    this.email,
+    this.photoUrl,
+    this.memberSince,
+  });
 
   factory UserModel.fromFirebaseUser(User user) {
     return UserModel(
@@ -14,6 +21,7 @@ class UserModel {
       name: user.displayName,
       email: user.email,
       photoUrl: user.photoURL,
+      memberSince: user.metadata.creationTime,
     );
   }
 }

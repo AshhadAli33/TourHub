@@ -19,7 +19,7 @@ class HomeView extends StatelessWidget {
   final List<Widget Function()> pageBuilders = [
     () => const HomeTabView(),
     () => BookingView(),
-    () => const ChatsView(),
+    () => ChatsView(),
     () => ProfileView(),
   ];
 
