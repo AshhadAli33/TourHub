@@ -14,7 +14,7 @@ class BookingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GradientScaffold(
-      padding: const EdgeInsets.fromLTRB(20, 12, 20, 120),
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -43,7 +43,7 @@ class BookingView extends StatelessWidget {
                 return _EmptyState();
               }
               return ListView.separated(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.only(bottom: 120),
                 itemCount: bookings.length + 1,
                 separatorBuilder: (_, _) => const SizedBox(height: 14),
                 itemBuilder: (context, index) {
@@ -97,7 +97,7 @@ class _StatsRow extends StatelessWidget {
           const SizedBox(width: 10),
           Expanded(
             child: _StatCard(
-              icon: Icons.savings_rounded,
+              icon: Icons.payments_rounded,
               label: "Spent",
               value: "\$${spent.toStringAsFixed(0)}",
             ),
@@ -142,10 +142,7 @@ class _StatCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 2),
-          Text(
-            label,
-            style: TextStyle(color: AppColors.white54, fontSize: 11),
-          ),
+          Text(label, style: TextStyle(color: AppColors.white54, fontSize: 11)),
         ],
       ),
     );
@@ -155,72 +152,74 @@ class _StatCard extends StatelessWidget {
 class _EmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            height: 96,
-            width: 96,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  AppColors.secondaryColor.withValues(alpha: 0.25),
-                  AppColors.secondaryColor.withValues(alpha: 0.05),
-                ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 120),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              height: 96,
+              width: 96,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    AppColors.secondaryColor.withValues(alpha: 0.25),
+                    AppColors.secondaryColor.withValues(alpha: 0.05),
+                  ],
+                ),
+              ),
+              child: Icon(
+                Icons.airplane_ticket_outlined,
+                size: 42,
+                color: AppColors.secondaryColor,
               ),
             ),
-            child: Icon(
-              Icons.airplane_ticket_outlined,
-              size: 42,
-              color: AppColors.secondaryColor,
-            ),
-          ),
-          const SizedBox(height: 20),
-          Text(
-            "No bookings yet",
-            style: TextStyle(
-              color: AppColors.white,
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            "Tours you book will show up here,\nready for your next adventure.",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: AppColors.white54,
-              fontSize: 13,
-              height: 1.4,
-            ),
-          ),
-          const SizedBox(height: 24),
-          ElevatedButton.icon(
-            onPressed: () =>
-                Get.find<BottomNavController>().changeIndex(0),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.secondaryColor,
-              foregroundColor: AppColors.primaryColor,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 22,
-                vertical: 13,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(14),
+            const SizedBox(height: 20),
+            Text(
+              "No bookings yet",
+              style: TextStyle(
+                color: AppColors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
               ),
             ),
-            icon: const Icon(Icons.explore_rounded, size: 18),
-            label: const Text(
-              "Explore Tours",
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+            const SizedBox(height: 6),
+            Text(
+              "Tours you book will show up here,\nready for your next adventure.",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: AppColors.white54,
+                fontSize: 13,
+                height: 1.4,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 24),
+            ElevatedButton.icon(
+              onPressed: () => Get.find<BottomNavController>().changeIndex(0),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.secondaryColor,
+                foregroundColor: AppColors.primaryColor,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 22,
+                  vertical: 13,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+              icon: const Icon(Icons.explore_rounded, size: 18),
+              label: const Text(
+                "Explore Tours",
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
