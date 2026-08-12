@@ -29,7 +29,7 @@ class ProfileStatCard extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppColors.white,
               fontSize: 17,
               fontWeight: FontWeight.bold,

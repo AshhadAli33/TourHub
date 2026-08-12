@@ -58,7 +58,7 @@ class AppSnackbar {
       snackPosition: SnackPosition.BOTTOM,
       snackStyle: SnackStyle.FLOATING,
       backgroundColor: AppColors.primaryColor,
-      colorText: AppColors.white,
+      colorText: AppColors.onPrimary,
       margin: const EdgeInsets.fromLTRB(16, 0, 16, 16),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       borderRadius: 14,
@@ -73,8 +73,8 @@ class AppSnackbar {
       leftBarIndicatorColor: color,
       titleText: Text(
         title,
-        style: const TextStyle(
-          color: AppColors.white,
+        style: TextStyle(
+          color: AppColors.onPrimary,
           fontSize: 15,
           fontWeight: FontWeight.w600,
         ),
@@ -82,7 +82,7 @@ class AppSnackbar {
       messageText: Text(
         message,
         style: TextStyle(
-          color: AppColors.white.withValues(alpha: 0.85),
+          color: AppColors.onPrimary.withValues(alpha: 0.85),
           fontSize: 13.5,
           height: 1.3,
         ),

@@ -18,7 +18,7 @@ class GradientScaffold extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: Container(
-        decoration: const BoxDecoration(gradient: AppColors.onboardingGradient),
+        decoration: BoxDecoration(gradient: AppColors.onboardingGradient),
         padding: padding,
         child: SafeArea(child: body),
       ),

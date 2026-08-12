@@ -215,7 +215,7 @@ class _Pill extends StatelessWidget {
           const SizedBox(width: 4),
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppColors.white,
               fontSize: 11,
               fontWeight: FontWeight.w600,

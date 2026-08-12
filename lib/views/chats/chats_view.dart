@@ -66,7 +66,7 @@ class ChatsView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
+        Text(
           "Chats",
           style: TextStyle(
             color: AppColors.white,
@@ -85,7 +85,7 @@ class ChatsView extends StatelessWidget {
                 color: AppColors.white12,
                 borderRadius: BorderRadius.circular(14),
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.mark_chat_unread_rounded,
                 color: AppColors.white,
               ),
@@ -134,7 +134,7 @@ class ChatsView extends StatelessWidget {
       ),
       child: TextField(
         onChanged: controller.updateSearch,
-        style: const TextStyle(color: AppColors.white, fontSize: 14),
+        style: TextStyle(color: AppColors.white, fontSize: 14),
         decoration: InputDecoration(
           border: InputBorder.none,
           isDense: true,

@@ -75,7 +75,7 @@ class ForgotPasswordView extends StatelessWidget {
                 child: RichText(
                   text: TextSpan(
                     text: "Back to ",
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: AppColors.white70,
                       fontSize: 16,
                     ),

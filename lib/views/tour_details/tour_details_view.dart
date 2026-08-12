@@ -17,7 +17,7 @@ class TourDetailsView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.transparent,
       body: Container(
-        decoration: const BoxDecoration(gradient: AppColors.onboardingGradient),
+        decoration: BoxDecoration(gradient: AppColors.onboardingGradient),
         child: Column(
           children: [
             SizedBox(

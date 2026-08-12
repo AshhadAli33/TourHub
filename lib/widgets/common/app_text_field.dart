@@ -24,10 +24,10 @@ class AppTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: obscureText,
-      style: const TextStyle(color: AppColors.white),
+      style: TextStyle(color: AppColors.white),
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: const TextStyle(color: AppColors.white54),
+        hintStyle: TextStyle(color: AppColors.white54),
         filled: true,
         fillColor: AppColors.white12,
         contentPadding: contentPadding,

@@ -76,7 +76,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
                         child: Container(
                           height: 7,
                           width: 7,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: AppColors.white,
                             shape: BoxShape.circle,
                           ),

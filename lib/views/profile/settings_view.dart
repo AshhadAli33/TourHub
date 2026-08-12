@@ -13,8 +13,9 @@ class SettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GradientScaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: const Text("Settings"),
         backgroundColor: AppColors.primaryColor,
+        foregroundColor: AppColors.onPrimary,
       ),
       body: ResponsiveCenter(
         child: ListView(

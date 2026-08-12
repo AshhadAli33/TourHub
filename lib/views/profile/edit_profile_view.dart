@@ -16,7 +16,8 @@ class EditProfileView extends StatelessWidget {
     return GradientScaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
-        title: Text("Edit Profile", style: TextStyle(color: AppColors.white)),
+        foregroundColor: AppColors.onPrimary,
+        title: const Text("Edit Profile"),
       ),
       padding: const EdgeInsets.all(20),
       body: ResponsiveCenter(

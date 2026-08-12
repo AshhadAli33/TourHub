@@ -87,7 +87,7 @@ class ChatDetailView extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () => Get.back(),
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_ios_new_rounded,
               color: AppColors.white,
               size: 20,
@@ -144,7 +144,7 @@ class ChatDetailView extends StatelessWidget {
                   conversation.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: AppColors.white,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
@@ -176,7 +176,7 @@ class ChatDetailView extends StatelessWidget {
               color: AppColors.white12,
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.call_outlined,
               color: AppColors.white,
               size: 18,
@@ -203,7 +203,7 @@ class ChatDetailView extends StatelessWidget {
                 color: AppColors.white.withValues(alpha: 0.15),
               ),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.add_rounded,
               color: AppColors.white,
               size: 22,
@@ -222,12 +222,12 @@ class ChatDetailView extends StatelessWidget {
               ),
               child: TextField(
                 controller: controller.textController,
-                style: const TextStyle(color: AppColors.white),
+                style: TextStyle(color: AppColors.white),
                 minLines: 1,
                 maxLines: 4,
                 textCapitalization: TextCapitalization.sentences,
                 onSubmitted: (_) => controller.sendMessage(),
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: "Type a message...",
                   hintStyle: TextStyle(color: AppColors.white54),
                   border: InputBorder.none,

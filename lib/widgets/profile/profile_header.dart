@@ -45,11 +45,11 @@ class ProfileHeader extends StatelessWidget {
                         height: 94,
                         width: 94,
                         alignment: Alignment.center,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.white24,
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.person_rounded,
                           size: 46,
                           color: AppColors.white,
@@ -87,7 +87,7 @@ class ProfileHeader extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           user?.name?.trim().isNotEmpty == true ? user!.name! : "Explorer",
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
             color: AppColors.white,

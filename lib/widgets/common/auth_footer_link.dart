@@ -19,7 +19,7 @@ class AuthFooterLink extends StatelessWidget {
     return RichText(
       text: TextSpan(
         text: promptText,
-        style: const TextStyle(color: AppColors.white70, fontSize: 15),
+        style: TextStyle(color: AppColors.white70, fontSize: 15),
         children: [
           TextSpan(
             text: actionText,
