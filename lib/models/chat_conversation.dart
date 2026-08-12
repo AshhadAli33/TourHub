@@ -32,7 +32,8 @@ final List<ChatConversation> chatConversations = [
   ChatConversation(
     id: "1",
     name: "Alpine Explorers",
-    avatarUrl: "https://i.pravatar.cc/150?img=12",
+    avatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=Alpine%20Explorers",
     role: "Tour Guide",
     online: true,
     unreadCount: 2,
@@ -62,7 +63,8 @@ final List<ChatConversation> chatConversations = [
   ChatConversation(
     id: "2",
     name: "TourHub Travel",
-    avatarUrl: "https://i.pravatar.cc/150?img=1",
+    avatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=TourHub%20Travel",
     role: "Support",
     online: true,
     unreadCount: 0,
@@ -82,7 +84,8 @@ final List<ChatConversation> chatConversations = [
   ChatConversation(
     id: "3",
     name: "Neon Wanderers",
-    avatarUrl: "https://i.pravatar.cc/150?img=32",
+    avatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=Neon%20Wanderers",
     role: "Tour Guide",
     online: false,
     unreadCount: 1,
@@ -97,7 +100,7 @@ final List<ChatConversation> chatConversations = [
   ChatConversation(
     id: "4",
     name: "Dune Riders",
-    avatarUrl: "https://i.pravatar.cc/150?img=45",
+    avatarUrl: "https://api.dicebear.com/9.x/avataaars/png?seed=Dune%20Riders",
     role: "Tour Guide",
     online: false,
     unreadCount: 0,

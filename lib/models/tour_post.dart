@@ -40,7 +40,8 @@ const tourPosts = [
         "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
     category: "Beach",
     authorName: "TourHub Travel",
-    authorAvatarUrl: "https://i.pravatar.cc/150?img=1",
+    authorAvatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=TourHub%20Travel",
     caption: "Crystal waters and overwater villas — pure paradise. 🏝️",
     likes: 2481,
     comments: 128,
@@ -55,7 +56,8 @@ const tourPosts = [
         "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80",
     category: "Mountain",
     authorName: "Alpine Explorers",
-    authorAvatarUrl: "https://i.pravatar.cc/150?img=12",
+    authorAvatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=Alpine%20Explorers",
     caption: "Snow-capped peaks and crisp mountain air await. ⛰️",
     likes: 1897,
     comments: 94,
@@ -70,7 +72,8 @@ const tourPosts = [
         "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
     category: "City",
     authorName: "Neon Wanderers",
-    authorAvatarUrl: "https://i.pravatar.cc/150?img=32",
+    authorAvatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=Neon%20Wanderers",
     caption: "Neon streets, sushi bars, and endless energy. 🏙️",
     likes: 3120,
     comments: 210,
@@ -85,7 +88,8 @@ const tourPosts = [
         "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&q=80",
     category: "Desert",
     authorName: "Dune Riders",
-    authorAvatarUrl: "https://i.pravatar.cc/150?img=45",
+    authorAvatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=Dune%20Riders",
     caption: "Golden dunes and starlit camps under the desert sky. 🐫",
     likes: 1543,
     comments: 76,
@@ -100,7 +104,8 @@ const tourPosts = [
         "https://images.unsplash.com/photo-1516214104703-d870798883c5?w=800&q=80",
     category: "Adventure",
     authorName: "Wild Trails Co.",
-    authorAvatarUrl: "https://i.pravatar.cc/150?img=23",
+    authorAvatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=Wild%20Trails%20Co.",
     caption: "Deep into the jungle, where the wild things are. 🌿",
     likes: 987,
     comments: 52,
@@ -115,7 +120,8 @@ const tourPosts = [
         "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80",
     category: "Beach",
     authorName: "Aegean Escapes",
-    authorAvatarUrl: "https://i.pravatar.cc/150?img=5",
+    authorAvatarUrl:
+        "https://api.dicebear.com/9.x/avataaars/png?seed=Aegean%20Escapes",
     caption: "Whitewashed cliffs and the best sunset in the world. 🌅",
     likes: 2765,
     comments: 143,
