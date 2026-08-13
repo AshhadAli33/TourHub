@@ -25,7 +25,7 @@ Firebase Authentication handles account creation, login, and password reset. Tou
 
 ## 🎬 Demo
 
-*A short walkthrough video will be linked here.*
+![TourHub demo](docs/demo/tourhub-demo.gif)
 
 ## ✨ Features
 
